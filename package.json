@@ -34,5 +34,8 @@
     "tailwindcss": "^3.4.1",
     "typescript": "^5.2.2",
     "vite": "^5.1.4"
-  }
+  },
+  "description": "This project, `sample-react-app`, is a modern, responsive front-end application built using [Vite](https://vitejs.dev/) and [Next UI](https://nextui.org/react) for React. It's designed to connect to a custom weather API to fetch and display weather data dynamically.",
+  "main": "postcss.config.js",
+  "keywords": []
 }
