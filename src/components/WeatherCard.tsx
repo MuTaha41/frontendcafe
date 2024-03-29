@@ -8,20 +8,28 @@ import {
   Button,
 } from "@nextui-org/react";
 import { useState } from "react";
-import { TiWeatherDownpour, TiWeatherSunny } from "react-icons/ti";
-import { getWeatherData } from "../api/actions";
+import { FaUtensils } from "react-icons/fa"; // Example restaurant icon
+import { getRestaurantData } from "../api/actions"; // Update this import to your actual function
 
-const WeatherCard: React.FC = () => {
-  const [data, setData] = useState<WeatherData>();
+// Update to use your actual RestaurantData interface
+interface RestaurantData {
+  name: string;
+  address: string;
+  cuisine: string;
+  rating: number;
+  isOpen: boolean;
+}
+
+const RestaurantCard: React.FC = () => {
+  const [data, setData] = useState<RestaurantData>();
   const [loadingState, setLoadingState] = useState(false);
-  const [city, setCity] = useState("");
+  const [search, setSearch] = useState("");
   const [error, setError] = useState("");
 
   const handleSearch = () => {
-    console.log("Fetching Weather Data...");
-    console.log(city);
+    console.log("Fetching Restaurant Data...");
     setLoadingState(true);
-    getWeatherData(city)
+    getRestaurantData(search) // Assume this function now fetches restaurant data
       .then((res) => {
         setError("");
         if (res) {
@@ -49,20 +57,13 @@ const WeatherCard: React.FC = () => {
         >
           <div className="flex flex-col w-full p-2 space-y-4">
             <Input
-              id="cityname"
+              id="restaurantSearch"
               type="text"
-              label="City"
-              value={city}
-              onChange={(e) => {
-                setCity(e.target.value);
-              }}
+              label="Search Restaurants"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
             />
-            <Button
-              className=""
-              color="primary"
-              isLoading={loadingState}
-              type="submit"
-            >
+            <Button color="primary" isLoading={loadingState} type="submit">
               Search
             </Button>
           </div>
@@ -72,26 +73,18 @@ const WeatherCard: React.FC = () => {
       {data ? (
         <CardBody>
           <div className="flex flex-col items-center">
-            <h1 className="text-3xl font-bold">{data.city}</h1>
-            {data.temperature > 20 ? (
-              <div>
-                <TiWeatherSunny className="w-36 h-36" />
-              </div>
-            ) : (
-              <div>
-                <TiWeatherDownpour className="w-36 h-36" />
-              </div>
-            )}
-            <p className="text-3xl font-bold">{data.temperature}°C</p>
-            <p className="text-lg">Humidity: {data.humidity}%</p>
-            <p className="text-lg">Wind: {data.wind} km/h</p>
-            <p className="text-lg">Rain: {data.rain} %</p>
+            <FaUtensils className="w-20 h-20" />
+            <h1 className="text-3xl font-bold">{data.name}</h1>
+            <p className="text-xl">{data.address}</p>
+            <p className="text-lg">Cuisine: {data.cuisine}</p>
+            <p className="text-lg">Rating: {data.rating} / 5</p>
+            <p className="text-lg">{data.isOpen ? "Open Now" : "Closed"}</p>
           </div>
         </CardBody>
       ) : (
         <CardBody>
           <div className="flex flex-col items-center">
-            <p className="text-xl font-bold">Please enter a city</p>
+            <p className="text-xl font-bold">Please search for a restaurant</p>
           </div>
         </CardBody>
       )}
@@ -99,16 +92,11 @@ const WeatherCard: React.FC = () => {
       <CardFooter>
         <div className="flex flex-col items-left">
           {error && <p className="text-xs text-red-600 ">{error}</p>}
-          {data && (
-            <p className="text-xs  text-gray-600 ">Last update successful.</p>
-          )}
-          {!data && (
-            <p className="text-xs  text-gray-600 ">Waiting for input...</p>
-          )}
+          {!data && <p className="text-xs text-gray-600 ">Waiting for input...</p>}
         </div>
       </CardFooter>
     </Card>
   );
 };
 
-export default WeatherCard;
+export default RestaurantCard;
