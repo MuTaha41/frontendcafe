@@ -1,7 +1,7 @@
-interface WeatherData {
-  city: string;
-  temperature: number;
-  humidity: number;
-  wind: number;
-  rain: number;
+interface RestaurantData {
+  name: string;
+  address: string;
+  cuisine: string;
+  rating: number;
+  isOpen: boolean;
 }
