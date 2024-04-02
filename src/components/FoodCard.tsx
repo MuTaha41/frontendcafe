@@ -40,14 +40,24 @@ const FoodCard: React.FC = () => {
           }}
         >
           <div className="flex flex-col w-full p-2 space-y-4">
-            <Input
+          <Input
+            id="foodtype"
+            type="text"
+            label="Food Type"
+            value={foodType}
+            onChange={(e) => setFoodType(e.target.value)}
+            isClearable={true} // Assuming 'isClearable' is the correct prop name
+          />
+
+
+            {/* <Input
               id="foodtype"
               type="text"
               label="Food Type"
               value={foodType}
               onChange={(e) => setFoodType(e.target.value)}
               clearable
-            />
+            /> */}
             <Button isLoading={loadingState} type="submit">
               Search
             </Button>
