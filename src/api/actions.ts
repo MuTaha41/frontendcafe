@@ -1,33 +1,75 @@
+// import axios, { AxiosError } from "axios";
+
+// //const API_URL = "https://cautious-fiesta-9rjxq6gjgwx2xw5x-3000.app.github.dev/"
+// const API_URL = "https://cautious-palm-tree-r5ww7995vrgh5q67-3000.app.github.dev/"
+
+ 
+
+// export const getFoodData = async (foodType: string): Promise<FoodData> => {
+//   return new Promise<FoodData>((resolve, reject) => {
+//     axios
+//       .get(`${API_URL}/food/${foodType}`)
+//       .then((res) => {
+//         resolve({
+//           city: city,
+//           temperature: res.data.temperature,
+//           humidity: res.data.humidity,
+//           wind: res.data.wind,
+//           rain: res.data.rain,
+//         });
+//       })
+//       .catch((error) => {
+//         if (axios.isAxiosError(error)) {
+//           const axiosError = error as AxiosError;
+//           if (axiosError.response?.status === 404) {
+//             reject("City not found");
+//           } else {
+//             // It's a good practice to reject with an Error object
+//             reject(axiosError.message);
+//           }
+//         } else {
+//           // Handle non-Axios errors
+//           reject("An unknown error occurred");
+//         }
+//       });
+//   });
+// };
+
 import axios, { AxiosError } from "axios";
-import { RestaurantData } from './global'; // Ensure this import points to the file where RestaurantData is defined
 
-const API_URL = "https://example.com/api"; // Replace with your actual Restaurant API URL
+const API_URL = "https://cautious-palm-tree-r5ww7995vrgh5q67-3000.app.github.dev/"
 
-// This function name should also be updated to reflect its new purpose
-export const getRestaurantData = async (): Promise<RestaurantData[]> => {
-  return new Promise<RestaurantData[]>((resolve, reject) => {
+// export interface FoodData {
+//   type: string;
+//   size: string;
+//   toppings: string[];
+//   price: string;
+// }
+
+export const getFoodData = async (foodType: string): Promise<FoodData> => {
+  return new Promise<FoodData>((resolve, reject) => {
     axios
-      .get(`${API_URL}/restaurants`) // The endpoint will likely be different for restaurants
+      .get(`${API_URL}/food/${foodType}`)
       .then((res) => {
-        // Assuming res.data is an array of restaurant objects
-        resolve(res.data.map((restaurant: any) => ({
-          name: restaurant.name,
-          address: restaurant.address,
-          cuisine: restaurant.cuisine,
-          rating: restaurant.rating,
-          isOpen: restaurant.isOpen, // Or whatever logic you need to determine if it's open
-        })));
+        resolve({
+          type: foodType,
+          size: res.data.size,
+          toppings: res.data.toppings,
+          price: res.data.price,
+        });
       })
-      .catch((error: AxiosError | Error) => {
+      .catch((error) => {
         if (axios.isAxiosError(error)) {
-          if (error.response?.status === 404) {
-            reject(new Error("Restaurants not found"));
+          const axiosError = error as AxiosError;
+          if (axiosError.response?.status === 404) {
+            reject(`${foodType} not found`);
           } else {
-            reject(new Error(error.message));
+            reject(axiosError.message);
           }
         } else {
-          reject(new Error("An unknown error occurred"));
+          reject("An unknown error occurred");
         }
       });
   });
 };
+

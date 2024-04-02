@@ -1,7 +1,6 @@
-interface RestaurantData {
-  name: string;
-  address: string;
-  cuisine: string;
-  rating: number;
-  isOpen: boolean;
+export interface FoodData {
+  type: string;
+  size: string;
+  toppings: string[];
+  price: string;
 }
