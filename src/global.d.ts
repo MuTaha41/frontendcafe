@@ -1,4 +1,4 @@
-export interface FoodData {
+interface FoodData {
   type: string;
   size: string;
   toppings: string[];
