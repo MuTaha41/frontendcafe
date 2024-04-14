@@ -1,6 +1,7 @@
 import axios, { AxiosError } from "axios";
 
 const API_URL = "https://special-giggle-5755v6679742v9gj-3000.app.github.dev/"
+
 //"https://cautious-palm-tree-r5ww7995vrgh5q67-3000.app.github.dev/"
 
 export interface FoodData {
