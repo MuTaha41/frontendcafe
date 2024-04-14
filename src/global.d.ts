@@ -3,7 +3,6 @@ interface FoodData {
   size: string;
   toppings: string[];
   price: string;
-  price: string;
   calories: number;
   category: 'Vegetarian' | 'Vegan' | 'Seafood' | 'Regular';
 }

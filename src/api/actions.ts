@@ -9,6 +9,8 @@ export interface FoodData {
   size: string;
   toppings: string[];
   price: string;
+  calories: number;
+  category: 'Vegetarian' | 'Vegan' | 'Seafood' | 'Regular';
 }
 
 export const getFoodData = async (foodType: string): Promise<FoodData> => {
@@ -21,6 +23,8 @@ export const getFoodData = async (foodType: string): Promise<FoodData> => {
           size: res.data.size,
           toppings: res.data.toppings,
           price: res.data.price,
+          calories: res.data.calories,
+          category: res.data.category,
         });
       })
       .catch((error) => {
