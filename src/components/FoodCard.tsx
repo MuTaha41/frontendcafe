@@ -69,6 +69,7 @@ const FoodCard: React.FC = () => {
         <CardBody>
           <div className="flex flex-col items-center">
             <h1 className="text-3xl font-bold">{data.type}</h1>
+            
             <p className="text-xl">Size: {data.size}</p>
             <p className="text-lg">Toppings: {data.toppings.join(", ")}</p>
             <p className="text-lg">Price: {data.price}</p>

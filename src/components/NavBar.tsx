@@ -1,6 +1,7 @@
 import { Navbar, NavbarBrand, NavbarContent } from "@nextui-org/react";
 import { MdRestaurant } from "react-icons/md"; // Changed from MdApi to MdRestaurant for relevance
 
+
 const NavBar = () => {
   return (
     <Navbar className="bg-slate-100 h-16">
