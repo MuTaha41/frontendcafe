@@ -1,6 +1,6 @@
 import axios, { AxiosError } from "axios";
 
-const API_URL = "https://curly-space-orbit-pvvgg6x79wvc79qx.github.dev/api"
+const API_URL = "https://curly-space-orbit-pvvgg6x79wvc79qx-3000.app.github.dev/api"
 // "https://friendly-waffle-6j4wqrqg5pc5gv-3000.app.github.dev/api"
 
 //"https://cautious-palm-tree-r5ww7995vrgh5q67-3000.app.github.dev/"
