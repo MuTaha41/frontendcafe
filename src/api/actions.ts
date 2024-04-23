@@ -1,10 +1,11 @@
 import axios, { AxiosError } from "axios";
 
-const API_URL = "https://friendly-waffle-6j4wqrqg5pc5gv-3000.app.github.dev/api"
+const API_URL = "https://curly-space-orbit-pvvgg6x79wvc79qx.github.dev/api"
+// "https://friendly-waffle-6j4wqrqg5pc5gv-3000.app.github.dev/api"
 
 //"https://cautious-palm-tree-r5ww7995vrgh5q67-3000.app.github.dev/"
 
-export interface FoodData {
+export interface DrinkData {
   type: string;
   size: string;
   toppings: string[];
@@ -13,13 +14,13 @@ export interface FoodData {
   category: 'Vegetarian' | 'Vegan' | 'Seafood' | 'Regular';
 }
 
-export const getFoodData = async (foodType: string): Promise<FoodData> => {
-  return new Promise<FoodData>((resolve, reject) => {
+export const getDrinkData = async (drinkType: string): Promise<DrinkData> => {
+  return new Promise<DrinkData>((resolve, reject) => {
     axios
-      .get(`${API_URL}/food/${foodType}`)
+      .get(`${API_URL}/drink/${drinkType}`)
       .then((res) => {
         resolve({
-          type: foodType,
+          type: drinkType,
           size: res.data.size,
           toppings: res.data.toppings,
           price: res.data.price,
@@ -31,7 +32,7 @@ export const getFoodData = async (foodType: string): Promise<FoodData> => {
         if (axios.isAxiosError(error)) {
           const axiosError = error as AxiosError;
           if (axiosError.response?.status === 404) {
-            reject(`${foodType} not found`);
+            reject(`${drinkType} not found`);
           } else {
             reject(axiosError.message);
           }

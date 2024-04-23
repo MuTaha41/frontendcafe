@@ -1,6 +1,6 @@
 import "./App.css";
 import NavBar from "./components/NavBar";
-import FoodCard from "./components/FoodCard";
+import FoodCard from "./components/DrinkCard";
 
 const App = () => {
   return (

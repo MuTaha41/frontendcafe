@@ -8,23 +8,23 @@ import {
   Button,
 } from "@nextui-org/react";
 import { useState } from "react";
-import { FaPizzaSlice } from "react-icons/fa";
-import { LuSalad } from "react-icons/lu";
-import { GiHamburger } from "react-icons/gi"; 
+import { GiTeapot } from "react-icons/gi";
+import { PiCoffeeFill } from "react-icons/pi";
+import { LuCupSoda } from "react-icons/lu"; 
 import { GiSushis } from "react-icons/gi";
-import { FoodData, getFoodData } from "../api/actions";
+import { DrinkData, getDrinkData } from "../api/actions";
 
-const FoodCard: React.FC = () => {
-  const [data, setData] = useState<FoodData | undefined>();
+const DrinkCard: React.FC = () => {
+  const [data, setData] = useState<DrinkData | undefined>();
   const [loadingState, setLoadingState] = useState(false);
-  const [foodType, setFoodType] = useState("");
+  const [drinkType, setDrinkType] = useState("");
   const [error, setError] = useState("");
 
   const handleSearch = () => {
-    console.log("Fetching Food Data...");
-    console.log(foodType);
+    console.log("Fetching Drink Data...");
+    console.log(drinkType);
     setLoadingState(true);
-    getFoodData(foodType)
+    getDrinkData(drinkType)
       .then((res) => {
         setError("");
         if (res) {
@@ -52,12 +52,12 @@ const FoodCard: React.FC = () => {
         >
           <div className="flex flex-col w-full p-2 space-y-4">
             <Input
-              id="foodname"
+              id="drinkname"
               type="text"
-              label="Food"
-              value={foodType}
+              label="Drink"
+              value={drinkType}
               onChange={(e) => {
-                setFoodType(e.target.value);
+                setDrinkType(e.target.value);
               }}
             />
             <Button
@@ -76,10 +76,10 @@ const FoodCard: React.FC = () => {
         <CardBody>
           <div className="flex flex-col items-center">
             <h1 className="text-3xl font-bold">{data.type}</h1>
-            {data.type === 'pizza' && <FaPizzaSlice className="w-36 h-36" />}
-            {data.type === 'salad' && <LuSalad className="w-36 h-36" />}
-            {data.type === 'burger' && <GiHamburger className="w-36 h-36" />}
-            {data.type === 'sushi' && <GiSushis className="w-36 h-36" />}
+            {data.type === 'coffee' && <GiTeapot className="w-36 h-36" />}
+            {data.type === 'soda' && <PiCoffeeFill className="w-36 h-36" />}
+            {data.type === 'tea' && <LuCupSoda className="w-36 h-36" />}
+            {data.type === 'smothie' && <GiSushis className="w-36 h-36" />}
             <h1 className="text-3xl font-bold">{data.type}</h1>
             <p className="text-xl">Size: {data.size}</p>
             <p className="text-lg">Toppings: {data.toppings.join(", ")}</p>
@@ -90,7 +90,7 @@ const FoodCard: React.FC = () => {
       ) : (
         <CardBody>
           <div className="flex flex-col items-center">
-            <p className="text-xl font-bold">Please enter a food type</p>
+            <p className="text-xl font-bold">Please enter a drink type</p>
           </div>
         </CardBody>
       )}
@@ -110,4 +110,4 @@ const FoodCard: React.FC = () => {
   );
 };
 
-export default FoodCard;
+export default DrinkCard;

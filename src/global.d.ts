@@ -1,8 +1,8 @@
-interface FoodData {
+interface DrinkData {
   type: string;
   size: string;
-  toppings: string[];
+  ingredients: string[];
   price: string;
   calories: number;
-  category: 'Vegetarian' | 'Vegan' | 'Seafood' | 'Regular';
+  category: 'Coffee' | 'Tea' | 'Smoothie' | 'Soda';
 }
