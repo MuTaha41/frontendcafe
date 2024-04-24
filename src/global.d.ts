@@ -4,5 +4,5 @@ interface DrinkData {
   ingredients: string[];
   price: string;
   calories: number;
-  category: 'Coffee' | 'Tea' | 'Smoothie' | 'Soda';
+  category: 'Coffee' | 'Tea' | 'Chocolate' | 'Soda';
 }
