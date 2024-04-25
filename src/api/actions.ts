@@ -5,6 +5,15 @@ const API_URL = "https://opulent-giggle-x66994jrgpwfvwx6.github.dev/api"
 
 //"https://cautious-palm-tree-r5ww7995vrgh5q67-3000.app.github.dev/"
 
+export interface DrinkData {
+  type: string;
+  size: string;
+  toppings: string[];
+  price: string;
+  calories: number;
+  category: 'Vegetarian' | 'Vegan' | 'Seafood' | 'Regular';
+}
+
 export const getDrinkData = async (drinkType: string): Promise<DrinkData> => {
   return new Promise<DrinkData>((resolve, reject) => {
     axios

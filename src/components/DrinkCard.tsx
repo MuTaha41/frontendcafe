@@ -79,7 +79,7 @@ const DrinkCard: React.FC = () => {
             {data.type === 'coffee' && <GiTeapot className="w-36 h-36" />}
             {data.type === 'soda' && <PiCoffeeFill className="w-36 h-36" />}
             {data.type === 'tea' && <LuCupSoda className="w-36 h-36" />}
-            {data.type === 'smothie' && <GiChocolateBar className="w-36 h-36" />}
+            {data.type === '' && <GiChocolateBar className="w-36 h-36" />}
             <h1 className="text-3xl font-bold">{data.type}</h1>
             <p className="text-xl">Size: {data.size}</p>
             <p className="text-lg">Toppings: {data.toppings.join(", ")}</p>
