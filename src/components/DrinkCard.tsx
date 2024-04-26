@@ -8,18 +8,18 @@ import {
   Button,
 } from "@nextui-org/react";
 import { useState } from "react";
+import { FaCoffee } from "react-icons/fa";
 import { GiTeapot } from "react-icons/gi";
-import { PiCoffeeFill } from "react-icons/pi";
-import { LuCupSoda } from "react-icons/lu"; 
-import { GiChocolateBar } from "react-icons/gi"
+import { LuCupSoda } from "react-icons/lu";
+import { SiChocolatey } from "react-icons/si";
 import { DrinkData, getDrinkData } from "../api/actions";
-
-const DrinkCard: React.FC = () => {
+ 
+const FoodCard: React.FC = () => {
   const [data, setData] = useState<DrinkData | undefined>();
   const [loadingState, setLoadingState] = useState(false);
   const [drinkType, setDrinkType] = useState("");
   const [error, setError] = useState("");
-
+ 
   const handleSearch = () => {
     console.log("Fetching Drink Data...");
     console.log(drinkType);
@@ -40,9 +40,12 @@ const DrinkCard: React.FC = () => {
         setError(error);
       });
   };
-
+ 
   return (
-    <Card className="max-w-[400px]">
+    // <Card className="max-w-[400px]">
+    // <Card className="max-w-[400px] bg-green-100">
+    <Card className="max-w-[400px] bg-gradient-to-r from-green-400 via-green-500 to-green-600">
+ 
       <CardHeader className="flex gap-3">
         <form
           onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
@@ -76,10 +79,10 @@ const DrinkCard: React.FC = () => {
         <CardBody>
           <div className="flex flex-col items-center">
             <h1 className="text-3xl font-bold">{data.type}</h1>
-            {data.type === 'coffee' && <GiTeapot className="w-36 h-36" />}
-            {data.type === 'soda' && <PiCoffeeFill className="w-36 h-36" />}
-            {data.type === 'tea' && <LuCupSoda className="w-36 h-36" />}
-            {data.type === '' && <GiChocolateBar className="w-36 h-36" />}
+            {data.type === 'coffee' && <FaCoffee className="w-36 h-36" />}
+            {data.type === 'tea' && <GiTeapot className="w-36 h-36" />}
+            {data.type === 'soda' && <LuCupSoda  className="w-36 h-36" />}
+            {data.type === 'chocolate' && <SiChocolatey className="w-36 h-36" />}
             <h1 className="text-3xl font-bold">{data.type}</h1>
             <p className="text-xl">Size: {data.size}</p>
             <p className="text-lg">Toppings: {data.toppings.join(", ")}</p>
@@ -90,7 +93,7 @@ const DrinkCard: React.FC = () => {
       ) : (
         <CardBody>
           <div className="flex flex-col items-center">
-            <p className="text-xl font-bold">Please enter a drink type</p>
+            <p className="text-xl font-bold">Please enter a food type</p>
           </div>
         </CardBody>
       )}
@@ -99,15 +102,18 @@ const DrinkCard: React.FC = () => {
         <div className="flex flex-col items-left">
           {error && <p className="text-xs text-red-600 ">{error}</p>}
           {data && (
-            <p className="text-xs  text-gray-600 ">Last update successful.</p>
+            // <p className="text-xs  text-white-600 ">Last update successful.</p>
+            <p className="text-xs text-white">Last update successful.</p>
           )}
           {!data && (
-            <p className="text-xs  text-gray-600 ">Waiting for input...</p>
+            // <p className="text-xs  text-white-600 ">Waiting for input...</p>
+            <p className="text-xs text-white">Waiting for input...</p>
           )}
         </div>
       </CardFooter>
     </Card>
   );
 };
-
-export default DrinkCard;
+ 
+export default FoodCard;
+ 

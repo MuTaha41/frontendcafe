@@ -1,6 +1,6 @@
 import axios, { AxiosError } from "axios";
 
-const API_URL = "https://opulent-giggle-x66994jrgpwfvwx6.github.dev/api"
+const API_URL = "https://jubilant-broccoli-v44gg5xpwgrhjx9.github.dev/api"
 // "https://friendly-waffle-6j4wqrqg5pc5gv-3000.app.github.dev/api"
 
 //"https://cautious-palm-tree-r5ww7995vrgh5q67-3000.app.github.dev/"
@@ -11,7 +11,7 @@ export interface DrinkData {
   toppings: string[];
   price: string;
   calories: number;
-  category: 'Vegetarian' | 'Vegan' | 'Seafood' | 'Regular';
+  category: 'Coffee' | 'Tea' | 'Soda' | 'Chocolate';
 }
 
 export const getDrinkData = async (drinkType: string): Promise<DrinkData> => {
