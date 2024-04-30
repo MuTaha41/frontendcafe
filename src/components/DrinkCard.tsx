@@ -12,7 +12,7 @@ import { FaCoffee } from "react-icons/fa";
 import { GiTeapot } from "react-icons/gi";
 import { LuCupSoda } from "react-icons/lu";
 import { SiChocolatey } from "react-icons/si";
-import { DrinkData, getDrinkData } from "../api/actions";
+import { getDrinkData } from "../api/actions";
  
 const FoodCard: React.FC = () => {
   const [data, setData] = useState<DrinkData | undefined>();
@@ -85,7 +85,7 @@ const FoodCard: React.FC = () => {
             {data.type === 'chocolate' && <SiChocolatey className="w-36 h-36" />}
             <h1 className="text-3xl font-bold">{data.type}</h1>
             <p className="text-xl">Size: {data.size}</p>
-            <p className="text-lg">Toppings: {data.toppings.join(", ")}</p>
+            <p className="text-lg">Toppings: {data.ingredients.join(", ")}</p>
             <p className="text-lg">Calories: {data.calories}</p>
             <p className="text-lg">Price: {data.price}</p>
           </div>
