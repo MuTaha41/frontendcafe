@@ -1,7 +1,7 @@
 //MuTaha41//
 import axios, { AxiosError } from "axios";
  
-const API_URL = "https://shiny-trout-x66994jrxggh64r-3000.app.github.dev/api";
+const API_URL = "https://obscure-umbrella-7qqrrxg7x6v3p56r-3000.app.github.dev/api";
  
 export const getDrinkData = async (drinkType: string): Promise<DrinkData> => {
   return new Promise<DrinkData>((resolve, reject) => {
